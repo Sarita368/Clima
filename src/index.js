@@ -16,6 +16,7 @@ function formatDate(timestamp) {
 }
 function showTemperature(response) {
   let data = response.data;
+  console.log("Full API response:", response.data);
 
   let cityElement = document.querySelector("#city");
   let temperatureElement = document.querySelector("#temperature");
@@ -27,9 +28,9 @@ function showTemperature(response) {
   let temperature = Math.round(response.data.temperature.current);
   cityElement.innerHTML = response.data.city;
   temperatureElement.innerHTML = `${temperature}`;
-  dateTimeElement.innerHTML = formatDate(data.time);
+  dateTimeElement.innerHTML = formatDate(data.time * 1000);
   descriptionElement.innerHTML = data.condition.description;
-  humidityElement.innerHTML = `${data.temperature.humidity}%`;
+  humidityElement.innerHTML = `${data.humidity}%`;
   windElement.innerHTML = `${Math.round(data.wind.speed)} km/h`;
 }
 function searchCity(city) {
