@@ -42,7 +42,31 @@ function handleSearchSubmit(event) {
 
   searchCity(searchInput.value.trim());
 }
+
+function displayForecast(response) {
+  let forecast = document.querySelector("#forecast");
+
+  let days = ["Tue", "Wed", "Thu", "Fri", "Sat"];
+  days.forEach(function(day) {
+    forecast.innerHTML += `
+      <div class="weather-app-forecast-day">
+        <div class="weather-app-forecast-date">${day}</div>
+        <div class="weather-app-forecast-icon">☀️</div>
+        <div class="weather-app-forecast-temperature">
+          <div class="weather-forecast-temperature">
+            <strong>15°</strong>
+          </div>
+          <div class="weather-forecast-temperature">9°</div>
+        </div>
+      </div>
+    `;
+  });
+}
+
 let searchFormElement = document.querySelector("#search-form");
 searchFormElement.addEventListener("submit", handleSearchSubmit);
 
 searchCity("Lisbon");
+
+
+displayForecast();
