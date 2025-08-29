@@ -61,6 +61,7 @@ function getForecast(city) {
 
 function displayForecast(response) {
   let forecast = document.querySelector("#forecast");
+  forecast.innerHTML = "";
 
   response.data.daily.forEach(function (day, index) {
     if (index > 4) {
